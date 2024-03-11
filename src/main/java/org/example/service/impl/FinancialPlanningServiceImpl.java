@@ -1,10 +1,13 @@
 package org.example.service.impl;
 
-import org.example.service.FinancialPlanning;
+import lombok.NonNull;
+import org.example.service.FinancialPlanningService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class FinancialPlanningImplementation implements FinancialPlanning {
+@Service
+public class FinancialPlanningServiceImpl implements FinancialPlanningService {
 
     /**
      * @param balance          текущий баланс кошелька
@@ -12,7 +15,7 @@ public class FinancialPlanningImplementation implements FinancialPlanning {
      * @return оставшееся колл-во на балансе кошелька
      */
     @Override
-    public Integer calculationExpensesOfDay(Integer balance, List<Integer> amountOfExpenses) {
+    public Integer calculationExpensesOfDay(@NonNull Integer balance, @NonNull List<Integer> amountOfExpenses) {
         for (int num : amountOfExpenses) {
             balance -= num;
         }
@@ -30,7 +33,7 @@ public class FinancialPlanningImplementation implements FinancialPlanning {
      */
 
     @Override
-    public Integer calculationIncomeOfMonth(Integer hoursInThisMonth, Integer hourlyRate, Integer pension, Integer scholarship) {
+    public Integer calculationIncomeOfMonth(@NonNull Integer hoursInThisMonth, @NonNull Integer hourlyRate, @NonNull Integer pension, @NonNull Integer scholarship) {
         return hourlyRate * hoursInThisMonth + pension + scholarship;
     }
 
@@ -43,9 +46,12 @@ public class FinancialPlanningImplementation implements FinancialPlanning {
      */
 
     @Override
-    public Integer calculationExpensesOfMonth(Integer requiredExpenses, Integer additionalExpenses) {
+    public Integer calculationExpensesOfMonth(@NonNull Integer requiredExpenses, @NonNull Integer additionalExpenses) {
         return requiredExpenses + additionalExpenses;
     }
 
-
+    @Override
+    public Integer additionalExpenses(Integer expenses, String descriptionOfExpenses) {
+        return null;
+    }
 }

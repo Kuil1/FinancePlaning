@@ -2,7 +2,7 @@ package org.example.service;
 
 import java.util.List;
 
-public interface FinancialPlanning {
+public interface FinancialPlanningService {
     /**
      * Расчет расходов за текущий день
      *
@@ -11,7 +11,6 @@ public interface FinancialPlanning {
      * @return оставшееся колл-во на балансе кошелька на текущий день
      */
     Integer calculationExpensesOfDay(Integer balance, List<Integer> amountOfExpenses);
-
     /**
      * Подсчет дохода за месяц
      *
@@ -32,5 +31,5 @@ public interface FinancialPlanning {
      * @return общий расход за месяц
      */
     Integer calculationExpensesOfMonth(Integer requiredExpenses, Integer additionalExpenses);
-
+    Integer additionalExpenses(Integer expenses, String descriptionOfExpenses);
 }

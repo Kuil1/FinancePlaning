@@ -1,2 +1,3 @@
 CREATE DATABASE Finance_Director;
-SELECT * FROM Finance_Director;
+CREATE USER admin WITH PASSWORD '12345';
+GRANT ALL PRIVILEGES ON DATABASE Finance_Director TO admin;
